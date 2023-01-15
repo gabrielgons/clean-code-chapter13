@@ -1,9 +1,7 @@
 package br.com.gabrielgoncalves.cleancodechapter13;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class Main {
-	private static AtomicInteger sharedCounter = new AtomicInteger(0);
+	private static int sharedCounter = 0;
 
 	    public static void main(String[] args) throws InterruptedException {
 	        Runnable task = () -> {
@@ -24,8 +22,8 @@ public class Main {
 	        System.out.println("Final value of sharedCounter: " + sharedCounter);
 	    }
 
-	    private static void incrementCounter() {
-	    	sharedCounter.incrementAndGet();
+	    private static synchronized void incrementCounter() {
+	        sharedCounter++;
 	    }
 }
 
